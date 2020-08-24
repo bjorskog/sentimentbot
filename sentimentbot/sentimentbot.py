@@ -2,7 +2,6 @@
 
 
 import requests
-import pendulum
 import collections
 
 import pandas as pd
@@ -11,7 +10,7 @@ from bs4 import BeautifulSoup
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
-__all__ = ["NewsFeed"]
+__all__ = ["NewsFeed", "SentimentAnalyzer"]
 
 
 _URI_TEMPLATE = "https://finviz.com/quote.ashx?t={ticker}"
@@ -114,7 +113,7 @@ class SentimentAnalyzer(object):
         )
         assert (
             sentiment_data.shape[0] == self._data.shape[0]
-        ), "Mismatch after analyzing."
+        ), "Mismatch in rows after analyzing."
 
         data = self._data.join(sentiment_data)
         return data
