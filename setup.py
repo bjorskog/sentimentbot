@@ -10,7 +10,8 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click>=7.0", "beautifulsoup4"]
+with open("requirements.txt") as requirements_file:
+    requirements = requirements_file.read()
 
 setup_requirements = [
     "pytest-runner",
@@ -36,7 +37,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description="Sentiment analysis for stock trading.",
-    entry_points={"console_scripts": ["sentimentbot=sentimentbot.cli:main",],},
+    entry_points={"console_scripts": ["sentimentbot=sentimentbot.__main__:main",],},
     install_requires=requirements,
     license="MIT license",
     long_description=readme + "\n\n" + history,

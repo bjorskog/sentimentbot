@@ -1,0 +1,4 @@
+# All paths not needed
+*/tests*
+*/docs*
+__pycache__
