@@ -24,8 +24,9 @@ class ReadFinviz(luigi.ExternalTask):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._feed = FinvizNewsFeed(self.ticker)
+        date_string = self.date_time.format("%Y%m%d%H%M")
         self._out_file = _OUTPATH.joinpath(
-            f"finviz_news_{self.ticker.lower()}_{self.date_time}.csv"
+            f"finviz_news_{self.ticker.lower()}_{date_string}.csv"
         )
 
     def run(self):
@@ -35,4 +36,3 @@ class ReadFinviz(luigi.ExternalTask):
 
     def output(self):
         return luigi.LocalTarget(self._out_file)
-
