@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: sentimentbot
 spec:
-  schedule: "0 7-22 * * *"
+  schedule: "0 * * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
@@ -25,6 +25,7 @@ spec:
                   cpu: 100m
                   memory: 900Mi
               image: bjorskog/sentimentbot:latest
+              imagePullPolicy: "Always"
               command: ["sentimentbot"]
           restartPolicy: Never
       backoffLimit: 2
